@@ -1,0 +1,72 @@
+header{
+	width: 100%;
+	height: 80px;
+	.logo-img{
+		height: 40px;
+		margin: 20px 0;
+	}
+	.drop-shadow();
+	h2{
+		a{
+			line-height: 80px;
+			color: @light-text-color;
+			margin-left: 20px;
+			img{
+				width: 16px;
+
+			}
+			&:hover{
+				text-decoration: none;
+				color: @text-color;
+			}
+		}
+	}
+}
+
+.main-section{
+	padding: 50px 0 100px 0;
+	min-height: ~"calc(100% - 80px)";
+	  background: url(../img/main-bg.jpg) no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	  position: relative;
+}
+
+footer{
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	h3{
+		text-align: center;
+		color: #fff;
+	}
+	.social{
+		text-align: center;
+		margin-top: 20px;
+		img{
+			width: 24px;
+			.transition(0.3s);
+			opacity: 0.6;
+			&:hover{
+				opacity: 1;
+			}
+		}
+		li{
+			display: inline-block;
+		}
+	}
+}
+
+.login-main-text{
+	h1{
+		text-align: center;
+		color: #fff;
+		position: relative;
+		margin-top: 15%;
+		font-size: 30px;
+		font-weight: 300;
+		padding: 0 30px;
+	}
+}

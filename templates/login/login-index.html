@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+		{% block header %}
+			<div class="container">
+				<figure class="header-logo">
+					<img src="{% static 'img/todo-logo.png' %}" class="logo-img" alt="">
+					<h2 class="pull-right"><a href="#"data-toggle="modal" data-target="#box-register-modal">register</a><a href="#" data-toggle="modal" data-target="#box-login-modal">login <img src="{% static 'img/logout-bng.png' %}" alt=""></a> </h2>
+				</figure>
+			</div>
+		{% endblock %}
+		{% block main-content %}
+				<div class="row">
+			<div class="login-main-text">
+				<h1>Todo box - the simpliest way to manage your tasks</h1>
+			</div>
+				</div>
+			</div>
+		{% endblock %}
+
+		<!-- Modal -->
+		{% block modal-boxes %}
+		<div class="box-add-task modal fade" id="box-login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content box-wrap-modal login-modal">
+		      <div class="modal-body">
+		      <figure class="box-close" data-dismiss="modal" aria-label="Close"><img src="{% static 'img/box-close.png' %}" alt=""></figure>
+		        <h1>Login</h1>
+				<figure class="box-separator"></figure>
+		        <form action="index.html" method='post'>
+		        	<input type="text" placeholder="Login" class="modal-login-input">
+		        	<input type="text" placeholder="Password" class="modal-login-input">
+		        	<button type="input" class="modal-btn">Login</button>
+		        </form>
+					<figure class="box-separator"></figure>
+			        <h1>Login with</h1>
+					<figure class="box-separator"></figure>
+					<a href="#" class="social-btn">Facebook</a>
+					<a href="#" class="social-btn">Twitter</a>
+					<a href="#" class="social-btn">Google</a>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="box-add-task modal fade" id="box-register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content box-wrap-modal login-modal">
+		      <div class="modal-body">
+		      <figure class="box-close" data-dismiss="modal" aria-label="Close"><img src="{% static 'img/box-close.png' %}" alt=""></figure>
+		        <h1>Register</h1>
+				<figure class="box-separator"></figure>
+		        <form action="index.html" method='post'>
+		        	<input type="text" placeholder="Username" class="modal-login-input">
+		        	<input type="text" placeholder="Password" class="modal-login-input">
+		        	<input type="text" placeholder="Full Name" class="modal-login-input">
+		        	<input type="text" placeholder="E-mail" class="modal-login-input">
+
+		        	<button type="input" class="modal-btn">Register</button>
+		        </form>
+					<figure class="box-separator"></figure>
+			        <h1>Register with</h1>
+					<figure class="box-separator"></figure>
+					<a href="#" class="social-btn">Facebook</a>
+					<a href="#" class="social-btn">Twitter</a>
+					<a href="#" class="social-btn">Google</a>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		{% endblock %}
