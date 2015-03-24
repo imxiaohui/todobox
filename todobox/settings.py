@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 import socket
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+ON_PAAS = 'OPENSHIFT_REPO_DIR' in os.environ
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
