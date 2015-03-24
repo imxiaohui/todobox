@@ -26,9 +26,10 @@
 		      <figure class="box-close" data-dismiss="modal" aria-label="Close"><img src="{% static 'img/box-close.png' %}" alt=""></figure>
 		        <h1>Login</h1>
 				<figure class="box-separator"></figure>
-		        <form action="index.html" method='post'>
-		        	<input type="text" placeholder="Login" class="modal-login-input">
-		        	<input type="text" placeholder="Password" class="modal-login-input">
+		        <form action="{% url 'login' %}" method='post'>
+		        	{% csrf_token %}
+		        	{{loginform.username}}
+		        	{{loginform.password}}
 		        	<button type="input" class="modal-btn">Login</button>
 		        </form>
 					<figure class="box-separator"></figure>
@@ -49,11 +50,12 @@
 		      <figure class="box-close" data-dismiss="modal" aria-label="Close"><img src="{% static 'img/box-close.png' %}" alt=""></figure>
 		        <h1>Register</h1>
 				<figure class="box-separator"></figure>
-		        <form action="index.html" method='post'>
-		        	<input type="text" placeholder="Username" class="modal-login-input">
-		        	<input type="text" placeholder="Password" class="modal-login-input">
-		        	<input type="text" placeholder="Full Name" class="modal-login-input">
-		        	<input type="text" placeholder="E-mail" class="modal-login-input">
+		        <form action="{% url 'register' %}" method='post'>
+		        {% csrf_token %}
+		        	{{registerform.username}}
+		        	{{registerform.password}}
+		        	{{registerform.fullname}}
+		        	{{registerform.email}}
 
 		        	<button type="input" class="modal-btn">Register</button>
 		        </form>
