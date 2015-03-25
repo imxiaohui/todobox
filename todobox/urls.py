@@ -9,8 +9,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'login.views.loginpage'),
     url(r'^register/$', 'login.views.register', name='register'),
-    url(r'^logout/$', 'login.views.logout_view', name='logout'),
-    url(r'^login/$', 'login.views.login_view', name='login'),
+    url(r'^mylogout/$', 'login.views.logout_view', name='logout'),
+    url(r'^mylogin/$', 'login.views.login_view', name='login'),
 
     url(r'^taskbox/$', 'tasks.views.boxes', name='boxes'),
 
@@ -18,4 +18,6 @@ urlpatterns = patterns('',
     url(r'^addtask/$', 'tasks.views.add_task', name='addtask'),
     url(r'^donetask/$', 'tasks.views.done_task', name='donetask'),
     url(r'^deletebox/$', 'tasks.views.delete_box', name='deletebox'),
+
+    url('', include('social.apps.django_app.urls', namespace='social')),
 )

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from tasks.models import TaskBox, Task
+from login.models import TodoUser
 
 def loginpage(request):
 	if request.user.is_authenticated():
@@ -42,6 +43,8 @@ def register(request):
 		fullname = form.cleaned_data['fullname']
 
 		u = User.objects.create_user(username,email,password,first_name=fullname)
+		t = TodoUser(user = u)
+		t.save()
 		box = TaskBox.objects.create(user=u,title='Important things')
 		Task.objects.create(box=box,title='Read the book')
 		Task.objects.create(box=box,title='Call to mother')

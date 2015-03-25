@@ -36,8 +36,8 @@
 			        <h1>Login with</h1>
 					<figure class="box-separator"></figure>
 					<a href="#" class="social-btn">Facebook</a>
-					<a href="#" class="social-btn">Twitter</a>
-					<a href="#" class="social-btn">Google</a>
+					<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="social-btn">Twitter</a>
+					<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="social-btn">Google</a>
 		      </div>
 		    </div>
 		  </div>
@@ -63,8 +63,8 @@
 			        <h1>Register with</h1>
 					<figure class="box-separator"></figure>
 					<a href="#" class="social-btn">Facebook</a>
-					<a href="#" class="social-btn">Twitter</a>
-					<a href="#" class="social-btn">Google</a>
+					<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="social-btn">Twitter</a>
+					<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="social-btn">Google</a>
 		      </div>
 		    </div>
 		  </div>

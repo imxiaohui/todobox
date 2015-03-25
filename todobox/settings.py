@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import socket
+from config import *
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ON_PAAS = 'OPENSHIFT_REPO_DIR' in os.environ
 
@@ -20,10 +21,9 @@ ON_PAAS = 'OPENSHIFT_REPO_DIR' in os.environ
 # SECURITY WARNING: keep the secret key used in production secret!
 
 if ON_PAAS:
-    SECRET_KEY = os.environ['OPENSHIFT_SECRET_TOKEN']
+    ALLOWED_HOSTS = ['todobox.melnychukk.com']
 else:
-    # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = 'a9)cti*&*4)irgn#5v3_n)ozo4#+fcxd@gftry2khnc2)n_f2i'
+    ALLOWED_HOSTS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # adjust to turn off when on Openshift, but allow an environment variable to override on PAAS
@@ -50,8 +50,30 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'login',
-    'tasks'
+    'tasks',
+    'social.apps.django_app.default',
+
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,6 +83,20 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    #'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'todobox.pipeline.create_default_data',
+    'social.pipeline.user.user_details'
 )
 
 ROOT_URLCONF = 'todobox.urls'
